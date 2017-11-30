@@ -1,0 +1,54 @@
+package com.example.mjwc.techfood;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.List;
+
+public class TelaCadastro extends AppCompatActivity {
+
+        EditText nome, email, senha;
+        Button cadastrar1, cancelar;
+        BancoDados db = new BancoDados(this);
+        ListView listausuarios;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.tela_cadastro);
+
+        nome = (EditText)findViewById(R.id.Nome);
+        email = (EditText)findViewById(R.id.Email);
+        senha = (EditText)findViewById(R.id.Senha);
+
+
+
+        cadastrar1 = (Button)findViewById(R.id.Cadastrar);
+        cancelar = (Button)findViewById(R.id.Cancelar);
+
+        cancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
+        listausuarios=(ListView)findViewById(R.id.listaUusarios);
+
+        db.addUsuario(new Usuario("Jefferson", "jefftest123", "olamundo@live.com"));
+        Toast.makeText(TelaCadastro.this, "SALVO COM SUCESSO!", Toast.LENGTH_LONG).show();
+
+
+
+
+
+
+    }
+}
